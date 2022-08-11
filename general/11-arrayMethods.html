@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>11-jsArrayMethods</title>
+</head>
+<body>
+
+<h3>Array Methods</h3>
+
+<script>
+	
+
+	var buah = ['Nangka','Jeruk','Jambu','Rambutan'];
+
+	document.write('Array Awal : ' + buah + '<br><br>');
+	
+	// 1. Mengubah Array Menjadi String
+	document.write('(toString) Ubah Array Jadi String : ' + buah.toString() + '<br>');
+	
+	// 2. Mengganti Karakter Pemisah Diantara Data Array (mengganti koma(,))
+	document.write('(join) Ubah Pemisah Array Jadi (*) : ' + buah.join('*') + '<br>');
+	
+	// 3. Menghapus Data Terakhir Dari Array
+	buah.pop();
+	document.write('(pop) Hapus Data Terakhir Array : ' + buah + '<br>');
+	
+	// 4. Menambah Data Terakhir Dari Array
+	buah.push('Durian');
+	document.write('(push) Tambah Data Terakhir Array : ' + buah + '<br>');
+	
+	// 5. Menghapus Data Pertama Dari Array
+	buah.shift();
+	document.write('(shift) Hapus Data Pertama Array : ' + buah + '<br>');
+	
+	// 6. Menambah Data Pertama Dari Array
+	buah.unshift('Cempedak');
+	document.write('(cempedak) Tambah Data Pertama Array : ' + buah + '<br>');
+	
+	// 7. Mengganti buah pertama dengan Melon
+	buah[0] = 'Melon';
+	document.write('Buah Pertama Diganti Dengan Melon : ' + buah + '<br>');
+	
+	// 8. Menambah lebih dari satu data di array
+	buah.splice(1,0,'Manggis','Alpukat','Mangga');  //1 adalah posisi dimana akan di tambah (posisi ke-2), 0 adalah banyak data yang dihapus
+	document.write('(splice) Menambah 3 data, dari urutan ke-2 : ' + buah + '<br>');
+
+	//9. Menghapus lebih dari satu data di array
+	buah.splice(1,3); //1 adalah posisi dimana akan dihapus (posisi ke-2), 3 adalah banyak data yang akan dihapus
+	document.write('(splice) Menghapus 3 data, dari urutan ke-2 : ' + buah + '<br>');
+
+	// 10. Menggabungkan 2 buah Array
+	var buah2 = ['Nanas','Markisa','Pisang'];
+	document.write('(concat) Menggabungkan array buah dan buah2 : ' + buah.concat(buah2) + '<br>');
+
+	// 11. Cut(Ambil) Data Buah Dari Index Tertentu
+	var buah_slice = buah.slice(2);
+	document.write('(slice) Mengambil Potongan Data Buah Dari Data Ke-3 : ' + buah_slice + '<br>');
+
+</script>
+
+</body>
+</html>

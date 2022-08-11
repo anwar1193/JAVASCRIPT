@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Math</title>
+</head>
+<body>
+
+	<h3>MATH Javascript</h3>
+
+	<script>
+		
+		document.write('(Math.round) Pembulatan Terdekat Dari 4.7 adalah : ' + Math.round(4.7) + '<br>');
+		document.write('(Math.round) Pembulatan Terdekat Dari 4.3 adalah : ' + Math.round(4.3) + '<br>');
+		document.write('(Math.pow) Hasil dari 3 pangkat 4 adalah : ' + Math.pow(3,4) + '<br>');
+		document.write('(Math.sqrt) Akar dari 81 adalah : ' + Math.sqrt(81) + '<br>');
+		document.write('(Math.abs) Kembalikan -400 menjadi positif : ' + Math.abs(-400) + '<br>');
+		document.write('(Math.ceil) Pembulatan ke atas dari 4.2 adalah : ' + Math.ceil(4.2) + '<br>');
+		document.write('(Math.floor) Pembulatan ke bawah dari 4.6 adalah : ' + Math.floor(4.6) + '<br>');
+		document.write('(Math.min) dari angka (0, 150, 30, 20, -8, -200) yang terendah : ' + Math.min(0, 150, 30, 20, -8, -200) + '<br>');
+		document.write('(Math.max) dari angka (0, 150, 30, 20, -8, -200) yang tertinggi : ' + Math.max(0, 150, 30, 20, -8, -200) + '<br>');
+		document.write('(Math.random) Angka acak antara 0-1 adalah : ' + Math.random() + '<br>');
+		document.write('(Math.floor(Math.random()*10)) Angka acak antara 0-9 adalah : ' + Math.floor(Math.random()*10) + '<br>');
+
+		var acak = Math.floor(Math.random()*10) + 1;
+		document.write('(Math.floor(Math.random()*10+ 1) ) Angka acak antara 0-10 adalah : ' + acak);
+
+
+	</script>
+
+	<!-- ............................................................................................................................ -->
+
+	<h3>Acak Angka Dengan Tombol</h3>
+
+	<button onclick="acak_angka()">Tombol Acak</button>
+
+	<div id="hasil" style="font-size: 20px; color: #3D0E6E; margin-top: 10px;">Hasil Acak</div>
+
+	<script>
+		function acak_angka(){
+			var acak = Math.floor(Math.random()*10) + 1;
+			var tampil = document.getElementById('hasil').innerHTML = acak;
+			return tampil;
+		}
+	</script>
+
+</body>
+</html>

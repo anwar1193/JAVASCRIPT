@@ -1,0 +1,734 @@
+1. DOM (Document Object Model) - Pendahuluan
+
+* DOM : antarmuka pemrograman untuk HTML yang metepresentasikan halaman web sehingga program dapat mengubah dan manipulasi struktur nya - mozilla
+
+* DOM : Representasi elemen HTML pada dokumen menjadi sebuat object - Sandhika Galih
+
+* DOM Tree : Pohon Hirarki DOM (Struktur HTML yang ditulis)
+
+* Karakteristik DOM :
+	- Antarmuka pemrograman berbasis objek yang merepresentasikan dokumen web
+	- DOM membuat seluruh komponen dari halaman web dapat diakses & dimanipulasi
+	- Komponen nya sbb :
+		* Elemen HTML
+		* Atribut
+		* Text
+		* dll
+	- DOM dapat dimanipulasi (dibuat, diubah, dihapus) menggunakan javascript
+
+* Materi DOM :
+	- DOM Selection
+	- DOM Manipulation
+	- DOM Traversal
+	- Event Handling
+	- Studi Kasus
+		* Membuat program2 sederhana
+
+-------------------------------------------------------------------------------------
+
+2. DOM Tree
+
+* DOM Tree : Pohon Hirarki DOM (Struktur HTML)
+
+* DOM Tree terdiri dari struktur2 HTML yang disebut node
+
+* Contoh :
+		          (document)
+		              |
+		            (html)
+		               |
+		        (head)   (body)
+		          |        |
+		        (title)   <h1> <p>
+
+* Node secara umum terdiri dari :
+	- Element, contoh : <html> , <body> , <h1> , <p>
+	- Text, contoh : 'Hello World'
+	- Attribute, contoh : href
+
+* NodeList vs HTMLCollection
+	- NodeList : jika kita memilih lebih dari 1 node
+	- HTMLCollection : Kumpulan node (yang tipe nya element(HTML))
+	- Keduanya merupakan kumpulan node
+	- Struktur datanya mirip array
+	- nodeList dapat berisi node apapun, sedangkan HTMLCollection harus berisi elemen HTML
+	- HTML Collection bersifat Live sedangkan nodeList tidak
+
+* Struktur Hierarki DOM Tree :
+	- Root Node :
+		* Node yang menjadi sumber dari semua node lain di dalam DOM
+		* Root Node yaitu : document
+	- Parent Node :
+		* Node yang berada 1 tingkat diatas node lain
+		* body adalah parent dari h1, p, div dan a
+	- Child Node :
+		* Node yang berada 1 tingkat di bawah node lain
+		* h1 adalah child dari body
+		* children : child node yang bertipe elemen HTML
+		* siblings (saudara kandung) : child node yang memiliki parent yang sama
+
+-------------------------------------------------------------------------------------
+
+3. DOM Selection
+
+* DOM Selection Method
+	- getElementById() , menghasilkan : element
+	- getElementsByTagName() , menghasilkan : HTMLCollection
+	- getElementsByClassName() , menghasilkan : HTMLCollection
+	- querySelector() , menghasilkan : element
+	- querySelectorAll() , menghasilkan : nodeList
+
+* CONTOH : (Script sebenarnya ada di file 3-DOMSelection.html & script-3.js)
+
+	1. getElementById -> document.getElementById() -> mengembalikan element
+		var judul = document.getElementById('judul');
+		judul.style.color = 'red';
+		judul.style.backgroundColor = 'silver';
+		judul.innerHTML = 'Munawar Ahmad';
+
+	2. document.getElementsByTagName() -> Mengembalikan HTMLCollection (Array)
+		var paragraf = document.getElementsByTagName('p');
+		paragraf[2].style.backgroundColor = 'lightblue'; //menyeleksi tag p ke-3 , untuk mengetahui index nya bisa lihat di console
+
+	3. document.getElementsByClassName() -> Mengembalikan HTMLCollection (Array)
+		var p1 = document.getElementsByClassName('p1');
+		p1[0].innerHTML = 'Ini Diubah Dari Javascript';
+
+	4. document.querySelector() -> menghasilkan element
+		var p4 = document.querySelector('#b p');
+		p4.style.color = 'green';
+		p4.style.fontSize = '30px';
+
+		var li2 = document.querySelector('section#b ul li:nth-child(2)');
+		li2.style.backgroundColor = 'orange';
+
+	5. document.querySelectorAll() -> menghasilkan nodeList
+		var p = document.querySelectorAll('p');
+		p[2].style.color = 'blue';
+
+------------------------------------------------------------------------------------
+
+5. DOM Manipulation - Part 1 (Manipulasi Element)
+
+* Materi DOM Manipulation :
+	- Manipulasi Element (contoh : merubah isi, merubah warna, dll)
+	- Manipulasi Node (contoh : menyisipkan element baru, menghilangkan element)
+
+* Method dalam Manipulasi Element :
+	- element.innerHTML (mengganti seluruh komponen HTML baik isi atau tag)
+	- element.style.<propertyCSS>
+	- element.setAttribute() (menambah / mengganti attribute)
+	- element.classList () (mengelola kelas) , sbb :
+		* element.classList.add() : menambah class baru
+		* element.classList.remove() : menghilangkan class yang ada
+		* element.classList.toggle() : kalo belum punya class dengan nama tsb akan menambah class, kalo sudah punya class akan menghilangkan class tsb
+		* element.classList.item() : untuk mengetahui nama class/class tertentu pada sebuah element
+		* element.classList.contains() : mengecek apakah di dalam sebuah element ada class tertentu
+		* element.classList.replace() : untuk mengganti class yang ada dengan class yang baru
+
+* Contoh element.innerHTML 
+
+	var judul = document.getElementById('judul');
+	judul.innerHTML = '<em>Munawar Ahmad</em>';
+
+	var sectionA = document.querySelector('section#a');
+	sectionA.innerHTML = '<p>Hello World</p>';
+
+
+* Contoh element.style.<propertiCSS> :
+
+	var judul = document.querySelector('#judul');
+	judul.style.color = 'lightblue';
+	judul.style.backgroundColor = 'salmon';
+
+
+* Contoh element.setAttribute() :
+
+	Di HTML Sebelum setAttribute :
+		<h1 id="judul">JUDUL</h1>
+
+	Di Javascript :
+		var judul = document.getElementById('judul');
+		judul.setAttribute('class', 'munawar');
+
+	Maka, di HTML setelah setAttribute :
+		<h1 id="judul" class="munawar">JUDUL</h1>
+
+
+	(Tambahan) untuk mengetahui isi attribute :
+		judul.getAttribute('class'); //maka hasilnya : munawar
+
+	(Tambahan) untuk menghapus attribute :
+		judul.removeAttribute('class');
+	Maka di HTML akan menjadi :
+		<h1 id="judul">JUDUL</h1>
+
+
+* Contoh element.classList() :
+	
+	di HTML sebelum nya :
+		<p class="p2">Paragraf 2</p>
+
+	di Javascript :
+		var p2 = document.querySelector('.p2');
+
+		p2.classList; //untuk menampilkan class2 yang ada di p2 (tulis di console aja)
+
+		p2.classList.add('label'); // menambah class label di p2
+			- Di HTML Jadi :
+				<p class="p2 label">Paragraf 2</p>
+
+		p2.classList.remove('label'); // menghapus class lebel di p2
+			- Di HTML Jadi :
+				<p class="p2">Paragraf 2</p>
+
+		p2.classList.toggle('label'); // menambah class label di p2 jika blm ada class label sebelumnya
+			- Di HTML Jadi :
+				<p class="p2 label">Paragraf 2</p>
+
+		p2.classList.toggle('label'); // menghapus class label di p2 jika sudah ada class label sebelumnya
+			- Di HTML Jadi :
+				<p class="p2">Paragraf 2</p>
+
+		p2.classList.item(0); //untuk menampilkan class index ke-0 (pertama) pada p2 (tulis di console aja)
+
+		p2.classList.contains('p2'); // menanyakan apakah ada class p2 di p2? hasil true atau false (tulis di console aja)
+
+		p2.classList.replace('p2','p10'); //mengganti class p2 jadi p10
+			- Di HTML Jadi :
+				<p class="p10">Paragraf 2</p>
+
+	(NB. Script Asli ada di file 5-DOMManipulation.html)
+
+
+------------------------------------------------------------------------------------
+
+6. DOM Manipulation - Part 2 (Manipulasi Node)
+
+* Method pada Manipulasi Node :
+	- document.createElement()
+	- document.createTextNode()
+	- node.appendChild()
+	- node.insertBefore()
+	- parentNode.removeChild()
+	- parentNode.replaceChild()
+
+
+* Contoh node.appendChild()
+	Di HTML :
+		<section id="a">
+			<p class="p1">Paragraf 1</p>
+			<a href="google.com">Google Anwar</a>
+			<p class="p2">Paragraf 2</p>
+			<p class="p3">Paragraf 3</p>
+		</section>
+
+	Di Javascript : (menambahkan paragraf baru (p) setelah paragraf 3 (di Akhir))
+		// step 1, buat elemen baru
+			var pBaru = document.createElement('p');
+
+		// step 2, buat isi element nya (text)
+			var textPBaru = document.createTextNode('Paragraf Baru');
+
+		// step 3, masukkan text(textPBaru) ke dalam paragraf baru (pBaru)
+			pBaru.appendChild(textPBaru);
+
+		// step 4 , Definisikan Parentnya (Section 5)
+			var sectionA = document.getElementById('a');
+
+		// step 5 , letakkan pBaru di sectionA (Paling bawah/akhir)
+			sectionA.appendChild(pBaru);
+
+
+* Contoh node.insertBefore()
+	Di HTML :
+		<section id="b">
+			<p>Paragraf 4</p>
+			<ul>
+				<li>Item 1</li>
+				<li>Item 2</li>
+				<li>Item 3</li>
+			</ul>
+		</section>
+
+	* Di Javascript : (menambahkan list item (li) baru di bawah item-1 di atas item-2)
+		// step 1, siapkan element baru dan isi nya lalu masukkan (gabungkan)
+			var liBaru = document.createElement('li');
+			var textLiBaru = document.createTextNode("Item Baru");
+			liBaru.appendChild(textLiBaru);
+
+		// step 2, buat/definisikan parent nya
+			var ul = document.querySelector('section#b ul');
+
+		// step 3, buat acuan tempat nya, ambil li2 karena kita akan menaruh sebelum li2
+			var li2 = document.querySelector('section#b ul li:nth-child(2)');
+
+		// step 4, letakkan liBaru sebelum li2
+			ul.insertBefore(liBaru, li2); // (node baru, lokasi);
+
+
+* Contoh parentNode.removeChild()
+	Di HTML :
+		<section id="a">
+			<p class="p1">Paragraf 1</p>
+			<a href="google.com">Google Anwar</a>
+			<p class="p2">Paragraf 2</p>
+			<p class="p3">Paragraf 3</p>
+		</section>
+
+	Di Javascript : remove link <a href=""></a>
+		// step-1 : definisikan parent nya (section a)
+			var sectionA = document.getElementById('a');
+
+		// step-2 : definisikan target yang akan di remove
+			var link = document.getElementsByTagName('a')[0];
+
+		// step-3 : remove link dari section a
+			sectionA.removeChild(link);
+
+
+* Contoh parentNode.replaceChild()
+	Di HTML :
+		<section id="b">
+			<p>Paragraf 4</p>
+			<ul>
+				<li>Item 1</li>
+				<li>Item 2</li>
+				<li>Item 3</li>
+			</ul>
+		</section>
+
+	Di Javascript : (Mengganti p/Paragraf 4 dengan h2/Judul Baru)
+		// step-1 : definisikan parent nya (section b)
+			var sectionB = document.getElementById('b');
+
+		// step-2 : definisikan target yang akan di replace
+			var p4 = sectionB.querySelector('p');
+
+		// step-3 : buat element baru
+			var h2baru = document.createElement('h2');
+			var textH2Baru = document.createTextNode('Judul Baru');
+			h2baru.appendChild(textH2Baru);
+
+		// step-4 : replace p4 dengan h2
+			sectionB.replaceChild(h2baru, p4);
+
+------------------------------------------------------------------------------------
+
+7. DOM Event
+
+* Events pada javascript merepresentasikan sebuah kejadian yang terjadi di dalam DOM
+
+* Kejadian tersebut bisa dilakukan oleh user (mouse event, keyboard event, dll)
+
+* bisa juga dilakukan otomatis oleh API (contoh, animasi selesai dijalankan, halaman selesai di load, dll)
+
+* Cara 'mendengarkan' event :
+	- Event Handler - on<event>
+		* Inline HTML attribute (ditulis di html langsung)
+		* element method (ditulis diluar html/di javascript)
+	
+	- addEventListener()
+
+* Perbedaan Event Handler dan addEventListener :
+	- Sewaktu membuat 2 event yang sama,
+		* pada event handler, yang dipakai adalah event yang terakhir dibuat, 
+		* pada addEventListener(), kedua event nya akan jalan
+
+* Daftar Event :
+	- Mouse Event :
+		(click, dblclick, mouseover, mouseenter, mouseleave, mouseup, wheel)
+	- Keyboard Event : ditekan, dilepas
+		(keydown, keypress, keyup)
+	- Resources Event : halaman di load
+	- Focus Event : bikin form, ketika inputan di klik
+	- View Event
+		(resize, scroll)
+	- Form Event
+		(reset, submit)
+	- CSS Animation & Transition Event
+	- Drag & Drop Event
+
+* Contoh Event
+	
+	1. Event Handler
+
+		di HTML :
+			<section id="a">
+				<p class="p1">Paragraf 1</p>
+				<a href="google.com">Google Anwar</a>
+				<p class="p2">Paragraf 2</p>
+				<p class="p3">Paragraf 3</p>
+			</section>
+
+		di Javascript : saat p2 di klik berubah warna biru muda
+
+			function ubahWarna(){
+				p2.style.backgroundColor = 'lightBlue';
+			}
+
+			var p2 = document.querySelector('.p2');
+			p2.onclick = ubahWarna;
+
+			------ATAU BISA JUGA DITULIS SBB : --------
+
+			var p2 = document.querySelector('.p2');
+			p2.onclick = function(){
+				p2.style.backgroundColor = 'lightBlue';
+			}
+
+	2. addEventListener()
+
+		di HTML :
+			<section id="b">
+				<p>Paragraf 4</p>
+				<ul>
+					<li>Item 1</li>
+					<li>Item 2</li>
+					<li>Item 3</li>
+				</ul>
+			</section>
+
+
+		Di Javascript : saat Paragraf 4 di klik, tambahkan item (li) baru di bawahnya
+			
+			var p4 = document.querySelector('section#b p');
+
+			p4.addEventListener('click',function(){
+				// tangkap parent
+				var ul = document.querySelector('section#b ul');
+
+				var liBaru = document.createElement('li');
+				var textLiBaru = document.createTextNode('item baru');
+				liBaru.appendChild(textLiBaru);
+				ul.appendChild(liBaru);
+			});
+
+
+------------------------------------------------------------------------------------
+
+8. Bermain Dengan Warna
+
+(Script asli ada di file 8-Bermain Dengan Warna)
+
+* Kasus-1 :
+	- Buat Tombol (dengan HTML - button)
+	- Ketika tombol di klik, warna berubah biru muda
+	- Ketika tombol di klik lagi, warna berubah ke warna asal (putih)
+
+* Kasus-2 :
+	- Buat Tombol Dengan Javascript
+	- Setiap Tombol di klik, warna body akan berubah secara acak
+
+* Kasus-3 :
+	- Buat 3 Slider dengan html (r,g,b) -> <input type="range">
+	- Saat slider di geser2 maka warnanya berubah sesuai perpaduan rgb nya
+
+* Kasus-4 :
+	- Ketika Mouse Digerakan Warna Backround Body Berubah
+	- Menggunakan koordinat posisi mouse
+
+------------------------------------------------------------------------------------
+
+9. Membuat Game Suwit Jawa
+
+(Script asli ada di file 9-gameSuwitJawa)
+
+------------------------------------------------------------------------------------
+
+10. Traversal (Penelusuran DOM)
+
+(Script asli ada di file 10-DOMTraversal)
+
+* Method2 Pada DOM Traversal
+	- parentNode : menghasilkan node
+	- parentElement : menghasilkan Element
+	- nextSibling : menghasilkan node
+	- nextElementSibling : menghasilkan element
+	- previousSibling : menghasilkan node
+	- previousElementSibling : menghasilkan element
+
+
+* Contoh Penggunaan Method DOM Traversal
+
+	Di HTML :
+
+		<div class="container">
+			<div class="card">
+				<h3>NAME CARD-1</h3>
+				<img src="10-File/anwar.png" width="80px" alt="">
+				<span class="nama">Nama : Munawar Ahmad</span><br>
+				<span class="telepon">Telp : 085219063505</span><br>
+				<span class="close">x</span>
+			</div>
+		</div>
+
+
+	Di Javascript :
+
+		const nama = document.querySelector('.nama');
+
+		const ortu = nama.parentElement; // untuk mengambil parent nya, hasilnya : (class card)
+		
+		const kakek = nama.parentElement.parentElement; // untuk mengambil parent dari parent nya, hasilnya : (class container)
+
+		const kakak = nama.previousElementSibling; // untuk mengambil element sebelumnya (dalam 1 parent), hasilnya : (img src="")
+
+		const adik = nama.nextElementSibling; // untuk mengambil element setelahnya (dalam 1 parent), hasilnya : <br>
+
+		console.log(adik);
+
+
+
+* Contoh KASUS (Menghilangkan Kartu Nama) yang HTML nya sbb :
+
+	<div class="container">
+		<div class="card">
+			<h3>NAME CARD-1</h3>
+			<img src="10-File/anwar.png" width="80px" alt="">
+			<span class="nama">Nama : Munawar Ahmad</span><br>
+			<span class="telepon">Telp : 085219063505</span><br>
+			<span class="close">x</span>
+		</div>
+	</div>
+
+
+	Di Javascript
+
+	1. Dengan For :
+		const close = document.querySelectorAll('.close');
+		for(let i=0 ; i<close.length ; i++){
+		  	close[i].addEventListener('click', function(){
+		  		close[i].parentElement.style.display = 'none'; // parentElement adalah DOM Traversal nya
+		  	});
+		}
+
+	2. Dengan forEach :
+		const close = document.querySelectorAll('.close');
+		close.forEach(function(el){
+			el.addEventListener('click', function(e){
+				e.target.parentElement.style.display = 'none';
+			})
+		});
+
+
+------------------------------------------------------------------------------------
+
+11. Prevent Default
+
+* Untuk menghentikan aksi default yang dilakukan sebuah element
+
+* Contoh (Menghilangkan aksi defaut dari <a href=""></a> yang berpindah halaman) - Masih kasus menghilangkan kartu nama
+	
+	di HTML :
+		<div class="card">
+			<h3>NAME CARD-1</h3>
+			<img src="10-File/anwar.png" width="80px" alt="">
+			<span class="nama">Nama : Munawar Ahmad</span><br>
+			<span class="telepon">Telp : 085219063505</span><br>
+			<a href="" class="close">x</a>
+		</div>
+
+	di Javascript :
+		const close = document.querySelectorAll('.close');
+		close.forEach(function(el){
+			el.addEventListener('click', function(e){
+				e.target.parentElement.style.display = 'none';
+				e.preventDefault(); // kalo tidak melakukan preventDefaut, kartu nama gak bs hilang karena akan selalu refresh halaman (efek a href)
+			})
+		});
+
+------------------------------------------------------------------------------------
+
+12. Event Bubbling
+
+* Masalah : 
+	- Jika di parent ada event, 
+	- saat kita ingin menjalankan event di element (child nya parent), 
+	- maka event parent nya akan dijalankan terlebih dahulu, baru event element nya jalan (ada 2 event jalan)
+
+* Tujuan (Salah satu kegunaan event bubbling) :
+	- Membuat event di element dapat di jalankan tanpa terlebih dahulu menjalankan event di parent nya
+
+* Contoh :
+
+	Di HTML
+
+		<div class="container">
+
+		<div class="card">
+			<h3>NAME CARD-1</h3>
+			<img src="10-File/anwar.png" width="80px" alt="">
+			<span class="nama">Nama : Munawar Ahmad</span><br>
+			<span class="telepon">Telp : 085219063505</span><br>
+			<a href="" class="close">x</a>
+		</div>
+
+		<div class="card">
+			<h3>NAME CARD-2</h3>
+			<img src="10-File/anwar.png" width="80px" alt="">
+			<span class="nama">Nama : Munawar Ahmad</span><br>
+			<span class="telepon">Telp : 085219063505</span><br>
+			<a href="" class="close">x</a>
+		</div>
+
+	</div>
+
+
+	Di Javascript
+		// Event di Tombol Close
+		const close = document.querySelectorAll('.close');
+		close.forEach(function(el){
+			el.addEventListener('click', function(e){
+				e.target.parentElement.style.display = 'none';
+				e.preventDefault();
+				e.stopPropagation(); // ini fungsi bubbling, supaya event di parent gak ikutan aktif waktu pencet close
+			})
+		});
+
+
+		// Event di parent (class card) - waktu card di pencet, akan muncul alert ok
+		const cards = document.querySelectorAll('.card');
+		cards.forEach(function(eCard){
+			eCard.addEventListener('click', function(){
+				alert('ok');
+			});
+		});
+
+------------------------------------------------------------------------------------
+
+13 - Membuat Image Gallery
+
+(NB. Script Asli ada di 13-imageGallery)
+
+------------------------------------------------------------------------------------
+
+14 - Tahap Belajar Selanjutnya
+
+* Opsi-opsi belajar selanjutnya :
+
+	- Javascript Lanjutan
+	- Jquery
+	- Front End (React.js , Angular, Vue.js)
+	- Back End (Node.js , Express.js)
+	- JSON (API)
+
+------------------------------------------------------------------------------------
+
+15 - Timing Event 
+
+* Event yang mengatur waktu kapan kita akan menjalankan script kita (manipulasi waktu)
+
+* Ada 2 cara manipulasi waktu :
+	- setTimeout : menjalankan script kita setelah menunggu sejumlah waktu tertentu
+	- setInterval : menjalankan script kita secara berulang-ulang (terus menerus sampe watu tertentu)
+
+* Contoh yang menggunakan time event
+	- slide show otomatis
+	- hitung waktu mundur
+
+* format penulisan setTimeout :
+	setTimeout(fungsiKita tanpa '()', waktu dalam ms);
+
+* Contoh Penggunaan setTimeout (Dengan Function Terpisah) :
+	function tampilPesan() {
+		alert('Hai Guys');
+	}
+
+	setTimeout(tampilPesan, 3000);
+
+	(ket : pada script di atas, alert baru akan muncul setelah 3 detik ketika halaman di refresh)
+
+
+* Contoh Penggunaan setTimeout (Dengan Function di Dalamnya) :
+	setTimout(function(){
+		alert('Hai Teman');
+	},2000);
+
+
+* Fungsi setTimeout juga bisa di hentikan di tengah2, caranya :
+	1. bungkus setTimeout di dalam sebuah variable :
+		const tes = setTimeout(function(){
+			alert('Selamat Pagi');
+		},5000);
+
+	2. Buat Sebuah Tombol (id='tombol'), lalu isikan event (click) sbb :
+		const tombol = document.querySelector('#tombol');
+		tombol.addEventListener('click', function(){
+			clearTimeout(tes);
+			alert('Selesai');
+		});
+
+* setInterval :
+	script jalan -> nunggu berapa detik -> script jalan lagi -> nunggu lagi -> jalan lagi -> dst
+
+* Format setInterval :
+	setInterval(fungsi, waktu dalam ms);
+
+* Contoh setInterval :
+	setInterval(function(){
+		console.log('Hallo teman');
+	},3000);
+	(ket : pada script diatas, alert akan muncul setiap 3 detik sekali)
+
+* Fungsi setInterval juga bisa di hentikan di tengah2, caranya :
+	1. bungkus setInterval di dalam sebuah variable :
+		const tes = setInterval(function(){
+			console.log('Selamat Pagi');
+		},5000);
+
+	2. Buat Sebuah Tombol (id='tombol'), lalu isikan event (click) sbb :
+		const tombol = document.querySelector('#tombol');
+		tombol.addEventListener('click', function(){
+			clearInterval(tes);
+			alert('Selesai');
+		});
+
+* Contoh Kasus : (Membuat Program Hitung Mundur)
+	Di HTML :
+	 - buat h1 dengan id='text'
+
+	Di Javascript :
+		1. cari tanggal sekarang (menghasilkan mili second) :
+			const sekarang = new Date().getTime();
+
+		2. Cari tanggal tujuan (menghasilkan mili second);
+			const tujuan = new Date('JAN 15, 2018 16:00:00').getTime(); -> untuk tujuan berdasarkan tanggal/waktu di kalender
+			const tujuan = new Date().getTime() + (1000*60); -> tujuan jika ingin durasi 1 menit
+
+
+		3. Cari Selisih waktu (masih dalam mili second) :
+			const selisih = tujuan - sekarang;
+
+		4. Konversi selisih waktu (ms) menjadi : hari, jam, menit, detik
+
+			const hari = Math.floor(selisih / (1000*60*60*24));
+
+			ket : pembulatan kebawah(selisih / (konversi ke format hari)
+				keterangan cara konversi waktu :
+					format awal = ms (mili second)
+					/ (1000) =  jadi second (second)
+					/ (1000 * 60) = jadi menit
+					/ (1000 * 60 * 60) = jadi jam
+					/ (1000 * 60 * 60 * 24) = jadi hari
+
+			const jam = Math.floor(selisih % (1000*60*60*24) / (1000*60*60));
+			(ket : cari sisa pembagian(%) dari 1 hari / (konversi ke format jam))
+
+			const menit = Math.floor(selisih % (1000*60*60) / (1000*60));
+			(ket : cari sisa pembagian(%) dari 1 jam / (konversi ke format menit))
+
+			const detik = Math.floor(selisih % (1000*60) / 1000);
+			(ket : cari sisa pembagian(%) dari 1 menit / (konversi ke format detik))
+
+		5. Tampilkan sisa waktu (selisih waktu) di html (#text) :
+			const text = document.querySelector('#text');
+			text.innerHTML = 'Waktu anda tinggal ' + hari + ' hari ' + jam + ' jam ' + menit + ' menit ' + detik + ' detik lagi !!';
+
+		6. Buat interval (misal const hitungMundur) setiap 1 detik (1000 ms), masukkan semua script di atas(kecuali variable 'tujuan'); 
+
+		7. Masih di dalam interval, hentikan interval jika waktu habis (semua = 0):
+			if(hari==0 && jam==0 && menit==0 && detik==0){
+				clearInterval(hitungMundur);
+				text.innerHTML = 'Waktu Anda Habis !!';
+			}

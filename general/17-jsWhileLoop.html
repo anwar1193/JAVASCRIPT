@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS While Loop</title>
+</head>
+<body>
+
+
+	<h3>While Loop Angka</h3>
+
+	<div id="while_angka">Tampil Hasil</div>
+
+	<script>
+		var teks = '';
+		var i = 0;
+
+		while(i<=5){
+			teks += i + '<br>'; 
+			i++;
+		}
+
+		document.getElementById('while_angka').innerHTML = teks;
+	</script>
+
+	<!-- .............................................................................................. -->
+
+	<h3>Do While Angka</h3>
+
+	<div id="doWhile">Tampil Do While</div>
+
+	<script>
+
+		var teks2 = '';
+		var x = 0;
+
+		do{
+			teks2 += x + '<br>';
+			x++;
+		}while(x<=4);
+
+		document.getElementById('doWhile').innerHTML = teks2;
+
+	</script>
+
+</body>
+</html>

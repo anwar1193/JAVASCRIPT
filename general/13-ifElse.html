@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS If Else</title>
+</head>
+<body>
+
+<div id="demo">tampil ucapan</div>
+
+
+<script>
+	var ucapan;
+	var waktu = new Date().getHours();
+
+	if(waktu < 10){
+		var ucapan = "Selamat Pagi";
+	}else if(waktu < 18){
+		var ucapan = "Selamat Sore";
+	}else{
+		var ucapan = "Selamat Malam";
+	}
+
+	document.getElementById('demo').innerHTML = ucapan;
+
+</script>
+
+</body>
+</html>

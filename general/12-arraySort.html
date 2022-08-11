@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Sort</title>
+</head>
+<body>
+
+
+<script>
+	
+	var cabang = ['Kalimalang','Cibubur','Purwakarta','Palu','Palembang', 'Yogyakarta'];
+	document.write('Cabang Semula : ' + cabang + '<br><br>');
+
+	// sort() -> Mengurutkan array secara Ascending
+	document.write('sort() -> Urutkan cabang Asc : ' + cabang.sort() + '<br>');
+	
+	// reverse() -> Mengurutkan array secara Descending
+	document.write('reverse() -> Urutkan cabang Desc : ' + cabang.reverse() + '<br>');
+	
+
+	// Math.max() -> Mencari nilai tertinggi dalam array
+	var nilai = [10,30,5,1,40];
+	document.write('Math.max.apply() -> Tampilkan nilai tertinggi : ' + array_max(nilai) + '<br>');
+
+	function array_max(arr){
+		return Math.max.apply(null,arr);
+	}
+
+
+	// Math.max() -> Mencari nilai tertinggi dalam array
+	var nilai2 = [10,30,5,1,40];
+	document.write('Math.min.apply() -> Tampilkan nilai terendah : ' + array_min(nilai2) + '<br>');
+
+	function array_min(arr2){
+		return Math.min.apply(null,arr2);
+	}
+
+</script>
+
+</body>
+</html>

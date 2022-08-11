@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Break</title>
+</head>
+<body>
+
+
+	<h3>Break For Loop Angka</h3>
+
+	<div id="demo">Tampil Hasil</div>
+
+	<script>
+		var teks='';
+		var i;
+
+		for(i=0; i<=10; i++){
+
+			if(i === 4){
+				break;
+			}
+
+			teks += i + '<br>';
+		}
+
+		document.getElementById('demo').innerHTML = teks;
+	</script>
+
+	<!-- ........................................................................ -->
+
+	<h3>Continue (Skip Step/Angka Tertentu di For Loop)</h3>
+
+	<div id="demo2">Tampil Hasil</div>
+
+	<script>
+		var teks2 = '';
+		var x;
+
+		for(x=0; x<=10; x++){
+			if(x==5){
+				continue; //skip angka 5
+			}
+			teks2 += x + '<br>';
+		}
+
+		document.getElementById('demo2').innerHTML = teks2;
+	</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Date Get Method</title>
+</head>
+<body>
+
+<script>
+	
+
+	var hari = new Date().getDay();
+	document.write('Ini hari ke : ' + hari + '<br>');
+
+	var tanggal = new Date().getDate();
+	document.write('Ini Tanggal : ' + tanggal + '<br>');
+
+	var bulan = new Date().getMonth(); // tampilkan bulan dengan angka 0-11
+	var bulan_sekarang = bulan+1;
+	document.write('Ini Bulan : ' + bulan_sekarang + '<br>');
+
+	var tahun = new Date().getFullYear();
+	document.write('Ini Tahun : ' + tahun + '<br>');
+
+	var jam = new Date().getHours();
+	document.write('Sekarang Jam : ' + jam + '<br>');
+
+	var menit = new Date().getMinutes();
+	document.write('Sekarang Menit : ' + menit + '<br>');	
+
+	var detik = new Date().getSeconds();
+	document.write('Sekarang Detik : ' + detik + '<br>');
+
+</script>
+
+</body>
+</html>

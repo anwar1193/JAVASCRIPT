@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS For Loop</title>
+</head>
+<body>
+
+<!-- ............................................................................................................ -->
+
+<h3>For Loop Data Array</h3>
+
+	<div id="loop_array">tampil loop array</div>
+
+	<script>
+		
+		var motor = ['Yamaha', 'Honda', 'Ducati', 'Suzuki', 'Ninja'];
+		var teks = '';
+		var i;
+
+		for(i=0; i<motor.length; i++){
+			teks+= motor[i] + '<br>';
+		}
+
+		document.getElementById('loop_array').innerHTML = teks;
+
+	</script>
+
+<!-- .............................................................................................................. -->
+
+<h3>For Loop Angka</h3>
+	
+	<div id="loop_angka">tampil loop angka</div>
+
+	<script>
+		
+		var teks2='';
+		var x;
+
+		for(x=0; x<=10; x++){
+			teks2+= x + '<br>';
+		}
+
+		document.getElementById('loop_angka').innerHTML = teks2;
+
+	</script>
+
+<!-- .............................................................................................................. -->
+
+<h3>For Loop Object (Menggunakan for in)</h3> 
+	
+	<div id="loop_object">tampil loop object</div>
+
+	<script>
+		var siswa = {siswa1 : 'Anwar', siswa2 : 'Shinta', siswa3 : 'Muneeb', siswa4 : 'Fikar'};
+		var teks3 = '';
+		var y;
+
+		for(y in siswa){
+			teks3 += siswa[y] + '<br>';
+		}
+
+		document.getElementById('loop_object').innerHTML = teks3;
+	</script>
+
+<!-- ........................................................................................................... -->
+
+<h3>For Of (Untuk iterable object seperti : array,string)</h3>
+
+	<script>
+		
+		var program = 'Javascript';
+		var z;
+
+		for(z of program){
+			document.write(z + '<br>');
+		}
+
+
+
+	</script>
+
+
+</body>
+</html>

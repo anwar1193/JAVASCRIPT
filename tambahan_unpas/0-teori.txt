@@ -1,0 +1,1419 @@
+1 - Dasar Pemrograman (Dengan Javascript)
+
+* Dasar Pemrograman : variable, tipe data, pengkondisian, pengulangan, object, function, array)
+
+* Manfaat Pemrograman :
+	- Mengajarkan Berfikir
+	- Membuat kita bisa membuat sesuatu yang dapat menyelesaikan masalah
+	- Belajar teliti, disiplin dan berfikir abstrak
+	- Mengubah komputer menjadi alat yang powerfull
+	- Membentuk pola pikir komputasional
+
+..............................................................................
+
+2 - Apa Itu Pemrograman
+
+* Program adalah serangkaian instruksi untuk komputer yang dirancang supaya komputer dapat berprilaku sesuai ketentuan
+
+* Instruksi Untuk Komputer :
+	- Memberi perintah pada komputer
+	- Melalui bahasa pemrograman
+	- Memecah tugas jadi instruksi sederhana
+		> Melakukan operasi matematika
+		> Menampilkan tulisan ke layar
+		> Mengubah ukuran, posisi atau warna dari sebuat pixel
+
+* Instruksi pada komputer disebut juga Statement
+
+* Pemrograman adalah cara kita untuk memberikan instruksi yang simpel dan terstruktur pada komputer
+
+..............................................................................
+
+3 - Bahasa Pemrograman
+
+* Contoh Bahasa Pemrograman : C, C++, C#, Java, Javascript, PHP, Python, Objective-C, Ruby, Visual Basic
+
+* Bahasa Mesin - hampir tidak mungkin kita tulis
+
+* Bahasa pemrograman : menjembatani antara manusia dengan bahasa mesin
+
+* Urutan bahasa pemrograman yang terdekat (bahasa mesin - bahasa manusia) :
+	Assembly, C, C++, Java/VB.NET, Ruby/Python, Javascript,PHP,ActionScript
+
+* Makin dekat ke bahasa mesin, performa bahasa pemrograman makin cepat
+
+..............................................................................
+
+4. Compiler vs Interpreter (Cara menterjemahkan koding)
+
+* Step Compiler : koding -> compile -> hasilnya file baru (.exe) -> jalankan di komputer lain
+
+* Step Interpreter : koding -> jalankan di web browser
+
+* Kelebihan Compiler :
+	- Siap untuk dijalankan (client tidak harus punya aplikasi tambahan)
+	- lebih cepat
+	- Source code tidak terlihat
+
+* Kekurangan Compiler :
+	- Tidak lintas platform (OS)
+	- Tidak Fleksibel (kalo error tidak bisa langsung diperbaiki)
+	- Ada Langkah Tambahan (Compile)
+
+* Kelebihan Interpreter :
+	- Lintas platform (OS)
+	- Fleksibel (Kalo error mudah untuk diperbaiki)
+	- Mudah untuk diuji
+
+* Kekurangan Interpreter :
+	- Butuh Interpreter (contoh web browser)
+	- Lebih lambat
+	- source code mudah diakses
+
+* Hybrid (gabungan kelebihan compiler + interpreter)
+
+* Step Hybrid : koding -> compile -> file (IL) -> jalankan di komputer lain dengan JIT (Just in time) compilation : lintas platform (OS)
+
+* Contoh Bahasa Program Compiler : C, C++, Objective-C
+
+* Contoh Bahasa Program Interpreter : Javascript, PHP
+
+* Contoh Bahasa Program Hybrid : Java, VB.Net, Python
+
+..............................................................................
+
+5. Kenapa Belajar Javascript ?
+
+* Karena :
+	- Gratis
+	- Tidak Perlu Installasi (karna di setiap browser sudah ada interpreter javascript)
+	- Hanya butuh web browser
+	- Bahasa tingkat tinggi (lebih dekat ke bahasa manusia)
+	- Bahasa scripting (Bisa jalan di semua OS / Lintas Platform)
+	- Untyped (Tidak perlu mendeklarasikan type di variable nya)
+
+* Javascript bisa apa?
+	- Client-Side web development
+		> Native Javascript / Vanilla Javascript
+		> Jquery
+		> Angular JS, React, Ember, Backbone
+	- Server-Side web Development
+		> NodeJS
+		> ExpressJS
+	- Browser Extension / Add-On
+	- Desktop Application
+		> Electron
+		> AppJS
+	- Mobile App Development
+		> Jquery Mobile
+		> Cordova / PhoneGap
+		> React Native
+	- IoT & Robotics
+		> CyclonJS, Johnny-Five
+	- API - JSON
+
+..............................................................................
+
+6. Sejarah Javascript
+
+..............................................................................
+
+7. Lingkungan Pengembangan javascript
+
+* Web Browser (kali ini pakai google chrome)
+	- Console (CTRL + Shift + I)
+	- Halaman HTML
+
+..............................................................................
+
+8. Nilai dan Tipe Data Pada javascript
+
+* Bit / Binary Digit / Bilangan Biner adalah satuan terkecil dari data yang ada di komputer
+
+* Nilai Bit hanya 0 dan 1
+
+* 1 terjadi ketika transistor komputer dialiri listrik
+
+* 0 terjadi ketika transistor komputer tidak dialiri listrik
+
+* Di Javascript ada 6 tipe data :
+	- Number
+	- String
+	- Boolean
+	- Object
+	- Function
+	- Undefined
+
+.............................................................................. 
+
+9 - Tipe Data Angka
+
+* Di Javascript Tidak Ada  Integer, yang ada floating point (bilangan pecahan)
+
+* Kapasitas angka yang bisa di tampung javascript = 18 x 1000 000 000 000 000 000 (tetapi tidak bisa di pakai semua)
+
+* Jenis angka javascript :
+	- Angka tanpa desimal
+		> Contoh : 10, 1500, 123456
+		>	Tingkat akurasinya 15 Digit
+	- Angka dengan desimal
+		> Contoh : 3.14 , 0.5 , 100.00
+		> Maksimal 17 Digit di Belakang Koma
+		> Hatii2 menjumlahkan bilangan desimal karena kadang tidak akurat (misal 0.2 + 0.1)
+	- Eksponen
+		> Contoh : 123e5 -> 12300000, 123e-5 -> 0.00123
+	- Angka Negatif
+		> Contoh : -100
+	- Angka Spesial
+		> Infinity
+			contoh 2/0 = Infinity, -2/0 = -Infinity
+		> NaN (Not a Number)
+			contoh 0/0 = NaN , 100/'apel' = NaN
+		> Angka yang dibagi string angka
+			contoh 10/'2' = 5
+
+* Jangan pernah mengawali angka javascript dengan 0, misal 022, hasilnya akan 18, karena dianggap sebagai bilangan oktal
+
+* Jangan pernah juga mengawali angka javascript dengan 0x, misal 0xFF, hasilnya akan 255, karena dianggap sebagai bilangan hexadecimal
+
+...............................................................................
+
+10-11. Operator Pada Javascript
+
+* Definisi : sebuah simbol yang digunakan untuk melakukan operasi
+
+* Jenis-jenis operator di javascript :
+	(Aritmatika, Penugasan, Perbandingan, Logika, String, Kondisional, Typeof)
+
+	- Aritmatika	: + , - , * , / , %
+		> urutan operasi matematika : KuKaBaTaKu (Kurung,Kali,Bagi,Tambah,Kurang)
+
+	- Penugasan : = , += , -= , *= , /=
+		> contoh : var x = 10, artinya menugaskan 10 untuk ke dalam x
+		> contoh : x += 5 , maka hasilnya = 15 (10 + 5)
+
+	- Perbandingan (menghasilkan boolean (true-false) )
+		== (sama dengan)
+		!= (Tidak sama dengan)
+		=== (Strict sama dengan)
+		!== (Strict tidak sama dengan)
+		> (lebih besar dari)
+		< (lebih kecil dari)
+		>= (lebih besar sama dengan)
+		<= (lebih kecil sama dengan)
+
+	- Logika 
+		&& (AND)
+			contoh : (10>8) && (10>12) -> hasilnya FALSE
+		|| (OR)
+			contoh : (10>8) || (10>12) -> hasilnya TRUE
+		! (NOT)
+			contoh : !(10>8) -> hasilnya FALSE
+
+	- String (+) -> menggabungkan string
+		contoh : var a = 'apple'; var b = 'pen';
+					a + b; -> hasilnya applepen
+
+	- Kondisional -> untuk mengecek suatu kondisi
+		contoh 1 : (10 % 2 == 0) ? 'genap' : 'ganjil';
+					-> maka hasilnya 'genap'
+		contoh 2 : (10>12) ? 'statement benar' : 'statement salah';
+					-> maka hasilnya 'statement salah'
+
+	- typeof -> untuk mengetahui tipe data suatu nilai
+		contoh :
+			1. typeof(10) -> hasilnya 'number'
+			2. typeof('hai') -> hasilnya 'string'
+			3. typeof(true) -> hasilnya 'boolean'
+
+...........................................................................
+
+12. Tipe Data String
+
+* Definisi : Mendefinisikan data textual
+ 
+* contoh string : 'hari ini hari sabtu'
+
+* escape character (\) -> menjadikan karakter sebagai string
+	contoh : 'hari ini hari jum'at' -> ini akan error jika di jalankan di javascript
+	penulisan yang benar : 'hari ini hari jum\'at' (tambahkan backslash(\))
+
+* kumpulan escape character pada javascript :
+	1. \0 -> hasilnya : karakter NULL
+	2. \' -> hasilnya : '
+	3. \" -> hasilnya : "
+	4. \\ -> hasilnya : \
+	5. \n -> hasilnya : (new line / baris baru)
+	6. \t -> hasilnya : (tab)
+	7. \b -> hasilnya : (backspace)
+	8. \u00A9 -> hasilnya : simbol copyright
+
+* fungsi length : untuk menghitung panjang karakter string
+	contoh : 'munawar ahmad'.length -> hasilnya 13
+
+.............................................................................
+
+13. Tipe Data Boolean (TRUE or FALSE)
+
+* Definisi : tipe data yang digunakan merepresentasikan logika TRUE atau FALSE
+
+* Boolean digunakan pada statement PENGKONDISIAN, untuk menentukan AKSI YANG BERBEDA dan mengatur ALUR KENDALI PROGRAM
+
+* contoh 1 : (10<20) -> Hasilnya true
+
+* contoh 2 : Boolean(10) -> hasilnya true
+             Boolean(0) -> hasilnya false
+
+* Nilai2 TRUE : true, angka bukan 0, 'string', object, arrays, function
+
+* Nilai2 FALSE : false, 0, '', undefined, null, NaN
+
+..............................................................................
+
+14. Variable
+
+* Definisi : sebuah tempat/wadah yang memiliki nama, yang digunakan untuk menyimpan nilai
+
+* Urutan membuat variable : Deklarasi - Inisialisasi - Assignment
+
+* Deklarasi : mendaftarkan variable ke dalam lingkup yang sesuai
+
+* Inisialisasi : menyediakan memori untuk variable
+
+* Assignment : menetapkan nilai yang spesifik ke dalam variable
+
+* Contoh Pembuatan Variable :
+	var x;  // deklarasi & inisialisasi
+	x = 20; // assignment
+
+* Biasakan deklarasi & inisialisasi dulu, baru assignment
+
+* Selain var, deklarasi juga bisa dengan : let dan const
+
+* Cara penulisan variable yang disarankan di javascript adalah Camel Case
+	Contoh : var namaLengkap;
+
+* kata yang tidak boleh digunakan sebagai nama variable
+
+* Penulisan variable dengan cara shorthand
+	contoh : 
+		var nama='anwar', umur=26, lulus=true;
+
+................................................................................
+
+15. Menulis Javascript (di document website)
+
+* Ada 2 cara menulis javascript di dokumen website : internal & eksternal
+
+* Internal : menulis javascript di dalam dokumen web itu sendiri (HTML)
+	1. Di dalam head (akhir)
+	2. di dalam body (akhir) -> lebih disarankan, supaya bisa load dulu semua element HTML di atasnya
+
+* Eksternal : menulis javascript di file javascript terpisah
+
+* fungsi console.log('isi'); -> menampilkan 'isi' di console browser
+
+(PRAKTEK ADA DI : 15-menulisJavascript.html)
+
+...............................................................................
+
+16. Popup Box / Dialog Box
+
+* Ada 3 macam Popup Box :
+	1. alert	: memberi pesan sederhana
+	2. prompt	: memberi pop up inputan -> mengembalikan nilai apapun yang di input kan pada inputan
+	3. confirm	: meminta konfirmasi user (OK atau Cancel) -> mengembalikan nilai boolean(true/false), true jika tekan OK, false jika cancel
+
+* contoh alert :
+	alert('hello world');
+
+* contoh prompt :
+	var nama = prompt('Masukan Nama : ');
+	alert(nama);
+
+* Contoh confirm :
+	var konfirmasi = confirm('Anda Yakin?');
+	alert(konfirmasi);
+
+(PRAKTEK ADA DI : 16-popupBox.html)
+
+..................................................................................
+
+17 - Control Flow (Alur Kendali) Pada Javascript
+
+* Apabila program kita memiliki lebih dari 1 statement, maka statement tersebut akan dieksekusi dari atas ke bawah atau dari kiri ke kanan
+
+* Control Flow dapat diatur dengan PENGULANGAN dan PENGKONDISIAN
+
+* Pengulangan (Loop/Iteration) : for, while, do while
+	contoh (for):
+		alert('mulai');
+		for(var x=0; x<5; x++){
+			alert('Alert Ke - ') + x;
+		}
+		alert('selesai')
+
+* Pengkondisian (Percabangan) : if, if else, switch
+	contoh (if):
+		var angka = prompt('Masukan Angka :');
+		if(angka % 2 === 0){
+			alert(angka + ' adalah bilangan GENAP');
+		}else
+			alert(angka + ' adalah bilangan GANJIl ')
+		}
+
+.................................................................................
+
+18. Pengulangan While
+
+* Format Penulisan :
+	while(kondisi){ //selama kondisi bernilai true 
+		aksi
+	}
+
+* Infinite loop / looping forever / looping tak terbatas :
+	while(true){
+		console.log('hello world');
+	}
+
+* Menghentikan loop :
+	1. Oleh User, contoh :
+		var ulang = true;
+		while(ulang){
+			console.log('hello world');
+			ulang = confirm('lagi?');
+		}
+
+	2. Oleh Program
+		- Format :
+			nilai awal
+			while(kondisi terminasi){
+				aksi
+				increment/decrement (penambahan/pengurangan)
+			}
+		- Contoh :
+			var nilaiAwal = 1;
+			while(nilaiAwal <= 5){
+				console.log('hello world ke ' + nilaiAwal);
+				nilaiAwal++;
+			}
+
+..............................................................................
+
+20. Pengulangan - for
+
+* Format :
+	for(nilai awal ; kondisi terminasi ; increment/decrement){
+		aksi
+	}
+
+* Contoh :
+	for(var x=1 ; x<=10 ; x++){
+		console.log('hello world ke - ' + x);
+	}
+
+..............................................................................
+
+21. Pengkondisian - IF ELSE
+
+* Format :
+	if(kondisi){ //jika kondisi true, maka jalan
+		aksi-1
+	}else{
+		aksi-2
+	}
+
+* Contoh :
+	var angka = prompt('masukkan angka');
+	if(angka % 2 == 0){
+		alert('bilangan genap');
+	}else{
+		alert('bilangan ganjil');
+	}
+
+..............................................................................
+
+22. Pengkondisian - ELSE IF
+
+* Format :
+	if(kondisi-1){
+		aksi-1
+	}else if(kondisi-2){
+		aksi-2
+	}else{
+		aksi-3
+	}
+
+* Contoh :
+	var angka = prompt('Masukan Angka :');
+	if(angka % 2 == 0){
+		console.log(angka + ' adalah GENAP');
+	}else if(angka % 2 == 1){
+		console.log(angka + ' adalah GANJIL');
+	}else{
+		angka + ' bukan angka';
+	}
+
+...............................................................................
+
+24. Switch
+
+* Hanya bisa menggunakan 1 kondisi
+
+* Format :
+	switch(ekspresi){
+		case 'nilai 1' :
+		aksi 1
+		break;
+
+		case 'nilai 2' :
+		aksi 2
+		break;
+
+		default :
+		aksi default
+		break;
+	}
+
+* Contoh :
+	var hari-ke = prompt('Masukkan Hari Ke :');
+
+	switch(angka){
+		case '1' :
+			alert('Hari Senin');
+			break;
+
+		case '2' :
+			alert('Hari Selasa');
+			break;
+
+		default :
+			alert('Bukan Hari Senin atau Selasa');
+			break;
+	}
+
+.............................................................................
+
+25. Pengulangan dan Pengkondisian Bersarang (komplex)
+
+* Latihan-1 , buatlah di console javascript :
+	*****
+	Jawaban :
+		var text = '';
+		for(var i=0 ; i<10; i++){
+			text += '*';
+		}
+		console.log(text);
+
+* Latihan-2, buatlah di console javascript :
+	*****
+	*****
+	*****
+	*****
+	*****
+	*****
+	Jawaban : 
+		var text = '';
+		for(var i=0 ; i<6 ; i++){
+			for(var j=0 ; j<5; j++){
+				text += '*';
+			}
+			text += '\n';
+		}
+		console.log(text);
+
+* Latihan-3, buatlah di console javascript :
+	*
+	**
+	***
+	****
+	*****
+	jawaban :
+		var text='';
+
+		for(var i=0 ; i<5 ; i++){
+			for(var j=0 ; j<=i ; j++){
+				text += '*';
+			}
+			text += '\n';
+		}
+
+		console.log(text);
+
+* Latihan-4, buatlah di console javascript :
+	*****
+	****
+	***
+	**
+	*
+	jawaban : 
+		var text = '';
+
+		for(var i=5 ; i>0 ; i--){
+			for(var j=0; j<i ; j++){
+				text += '*';
+			}
+			text += '\n';
+		}
+
+		console.log(text);
+
+* Latihan-5 , compassion test :
+	Buat Perkalian berulang, misal angka yang dimasukkan 4 , berarti hasil = 4x3x2x1 = 24
+
+	- jawaban 1 (biasa) : 
+		var hasil = 1;
+		var angka = 4;
+
+		for(var i=angka; i>=1 ; i--){
+			hasil *= i;
+		}
+
+		console.log(hasil);
+
+	- jawaban 2 (dengan function) :
+		function faktorial(n){
+			var hasil = 1;
+			for(var i=n ; i>0 ; i--){
+				hasil *= i;
+			}
+			return hasil;
+		}
+		console.log(faktorial(4));
+
+* Latihan-5, buatlah di console javascript :
+	*
+	**
+	***
+	****
+	***
+	**
+	*
+
+* Latihan-6, buatlah di console javascript :
+	    *
+	   ***
+	  *****
+	 *******
+	*********
+
+* Latihan-7, buatlah di console javascript :
+	    *
+	   ***
+	  *****
+	 *******
+	  *****
+	   ***
+	    *
+
+* Latihan-8, buatlah di console javascript :
+	# # # # #
+	 # # # # #
+	# # # # #
+	 # # # # #
+	# # # # #
+	 # # # # #
+
+* Latihan-9, buatlah segitiga pascal berikut di console javascript :
+	    1
+	   1 1
+	  1 2 1
+	 1 3 3 1
+	1 4 6 4 1
+
+
+.............................................................................
+
+26. Membuat Game Suwit Jawa
+
+* Source Code :
+	
+	// Menangkap Pilihan Player
+	var player = prompt('pilih : gajah, semut, orang');
+
+	// Menangkap Pilihan Komputer (Dengan Bilangan Random)
+	var comp = Math.random(); // Bilangan random 0-1
+
+	if(comp < 0.34){
+		comp = 'gajah';
+	}else if(comp >= 0.34 && comp<0.67){
+		comp = 'orang';
+	}else{
+		comp = 'semut';
+	}
+
+	// Menentukan rules (siapa menang lawan siapa)
+	var hasil = '';
+
+	if(player == comp){
+		hasil = 'SERI!';
+	}else if(player == 'gajah'){
+		hasil = (comp == 'orang') ? 'MENANG!' : 'KALAH!';
+	}else if(player == 'orang'){
+		hasil = (comp == 'gajah') ? 'KALAH!' : 'MENANG!';
+	}else if(player == 'semut'){
+		hasil = (comp == 'orang') ? 'KALAH!' : 'MENANG!';
+	}else{
+		hasil = 'Memasukan Pilihan yang Salah';
+	}
+
+	// Tampilkan hasil
+	alert('Kamu memilih ' + player + ' dan Komputer memilih ' + comp + '\n Maka Hasilnya : kamu ' + hasil);
+	
+
+* Latihan :
+	Buat game tebak angka, kesempatan 3x
+
+....................................................................................
+
+27. Function - Intro
+
+* Function adalah kunci utama pada javascript yang membuat javascript sangat powerfull
+
+* function = method + class + constructor + module
+
+* Definisi function : 
+  1. sub-program/sub-routine yang dapat DIPANGGIL di bagian lain program
+  2. Merupakan struktur dasar pembentuk javascript
+  3. Disebut juga sebagai prosedur (kumpulan STATEMENT untuk melakukan tugas atau menghitung sebuah nilai)
+  4. Untuk dapat menggunakannya, kita harus MEMBUAT terlebih dahulu function tersebut, lalu MEMANGGIL nya
+  5. Termasuk ke dalam First-Class Object
+
+* Kenapa Function?
+	1. Reusability (DRY : Do Not Repeat Yourself)
+	2. Dekomposisi / Abstraksi
+	3. Modularitas
+
+* Kategori Function :
+	1. Built In Function : Function yang sudah disediakan oleh javascript
+		Contoh :
+			alert();
+			confirm();
+			prompt();
+	2. User-defined Function : function yang dibuat sendiri
+		- Menggunakan keyword function
+		- Nama function (optional)
+		- Parameter / Argument
+			a. Disimpan di dalam ()
+			b. Boleh ada atau tidak, jika ada boleh lebih dari satu
+			c. Dipisahkan oleh koma (,) jika lebih dari 1 parameter
+		- Function body, DIBUNGKUS dengan {}
+		- Dapat mengembalikan nilai (return value) atau tidak
+		- Cara Membuat
+
+			a. Dengan Deklarasi (function declaration) contoh :
+				function jumlahDuaBilangan(a, b){
+					var total;
+					total = a+b;
+
+					return total;
+				}
+
+			b. Dengan Expresi (function expression), contoh :
+				var jumlahDuaBilangan = function(a,b){
+					var total;
+					total = a+b;
+
+					return total;
+				}
+
+		- Memanggil / Menjalankan Function, contoh :
+			alert(jumlahDuaBilangan(4,5));
+
+....................................................................................
+
+28. Function - Membuat dan Menjalankan Function
+
+* Cara Kerja Function (secara umum) :
+	1. Input (Memasukkan bahan/material ke dalam function)
+	2. Function (lakukan sesuatu terhadap bahan/material tadi)
+	3. Output (menghasilkan sesuatu)
+
+* Function yang baik hanya mengerjakan 1 hal saja (secara spesifik)
+
+* Function
+	- Blok kode yang dibuat untuk melakukan tugas spesifik
+	- Dapat dipanggil berulang kali
+	- Memudahkan penelusuran
+
+* Contoh Kasus :
+	Soal :
+		Ada 2 buah kubus, kubus A dan kubus B. 
+		Kubus A sisinya = 8, Kubus B sisinya 3
+		Jumlahkan Volume 2 kubus tersebut
+
+	Jawaban :
+		Algoritma
+		- Ketahui sisi masing2 kubus
+		- hitung volume masing2 kubus (s x s x s) atau s(pangkat 3)
+		- jumlahkan hasil nya
+		- kembalikan nilai jawabannya
+
+		Script :
+			function jumlahVolKubus(kubus1, kubus2){
+				var vol1, vol2, volTotal;
+				
+				vol1 = kubus1*kubus1*kubus1;
+				vol2 = kubus2*kubus2*kubus2;
+
+				volTotal = vol1 + vol2;
+				return volTotal;
+			}
+
+			alert('Volume Total Kubus 1 Adalah : ' + jumlahVolKubus(8,3));
+
+....................................................................................
+
+29. Function - Parameter & Argument
+
+* Parameter : 
+	- Def 1 : Bahan baku yang kita gunakan di dalam function
+	- Def 2 : Variable yang di tulis di dalam kurung pada saat function dibuat, digunakan untuk menampung nilai yang dikirim saat function di panggil
+
+* Argument : Nilai yang dikirimkan ke parameter saat fungsi dipanggil
+
+
+* Contoh parameter dan argument :
+
+	function tambah(a,b) { // a dan b adalah parameter
+		return a + b;
+	}
+
+	var hasil = tambah(5,10) // 5 dan 10 adalah argument
+
+
+* Contoh program 1 (membuat penjumlahan dengan inputan dari user) :
+	
+	function tambah(a,b){
+		return a + b;
+	}
+
+	var nilai1 = parseInt(prompt('Masukkan nilai 1 :'));
+	var nilai2 = parseInt(prompt('Masukkan nilai 2 :'));
+	var hasil = tambah(nilai1,nilai2);
+
+	alert(hasil);
+
+* Contoh Program 2 (function di dalam function) :
+	
+	function tambah(a,b){
+		return a+b;
+	}
+
+	function kali(a,b){
+		return a*b;
+	}
+
+	var hasil = kali(tambah(1,2) , tambah(3,4)); // var hasil = (1+2) * (3+4) = 21
+	console.log(hasil);
+
+* Bagaimana Jika Parameter dan Argument tidak sesuai, misal parameter lebih banyak dari argument (parameter ada 2, argument ada 3) atau sebaliknya?
+
+	Jawab : Aturan parameter dan argument sbb :
+
+			- Jika parameter lebih sedikit dari argument, maka argument kelebihanya akan diabaikan
+			contoh :
+				function tambah(a,b){
+					return a+b;
+				}
+
+				var hasil = tambah(5,10,20); //Maka nilai 20 akan diabaikan
+
+			 - Jika parameter lebih banyak dari argument, maka parameter kelebihannya akan diisi dengan nilai undefined
+			 contoh :
+			 	function tambah(a,b,c){ //nilai parameter c adalah undefined
+			 		return a+b;
+			 	}
+
+			 	var coba = tambah(5,10);
+
+* arguments : (variable dari javascript)
+	- Array yang berisi nilai yang dikirim saat fungsi di panggil
+	- kegunaanya untuk mengisi kan argument tanpa mengisi / memperdulikan parameter (Argument yang dimasukan menjadi tidak terbatas)
+	
+	- Contoh Penggunaan :
+		function tambah(){
+			var hasil = 0;
+			for(var i=0 ; i<arguments.length; i++){
+				hasil += arguments[i];
+			}
+			return hasil;
+		}
+
+		var coba = tambah(1,2,3,4);
+		alert(coba);
+
+....................................................................................
+
+30. Function - Refactoring (Penulisan Script Lebih Efisien)
+
+* Refactoring : Sebuah proses mengubah kode agar menjadi lebih BAIK tanpa mengubah fungsionalitasnya
+
+* Kenapa harus refactoring?
+	- readability (kode mudah di baca oleh orang lain)
+	- DRY (Don't Repeat Yourself) : mencegah penulisan kode berulang
+	- Testability : Mudah saat dilakukan pengujian
+	- Performance : menulis kode yang dapat meningkatkan performa program
+	- Maintainability : Mudah untuk di pelihara dan di kembangkan
+
+* Contoh Refactoring Sederhana :
+
+	- Sebelum Refactoring :
+		function jumlahVolKubus(kubus1, kubus2){
+			var vol1, vol2, volTotal;
+			
+			vol1 = kubus1*kubus1*kubus1;
+			vol2 = kubus2*kubus2*kubus2;
+
+			volTotal = vol1 + vol2;
+			return volTotal;
+		}
+
+		alert('Volume Total Kubus 1 Adalah : ' + jumlahVolKubus(8,3));
+
+	- Setelah Refactoring :
+		function jumlahVolKubus(kubus1, kubus2){
+			return (kubus1 * kubus1 * kubus1) + (kubus2 * kubus2 * kubus2);
+		}
+
+		alert('Volume Total Kubus 1 Adalah : ' + jumlahVolKubus(8,3));
+
+....................................................................................
+
+31. Function - Variable Scope
+
+* Dalam pemrograman ada 2 jenis scope (Block Scope & Function Scope)
+
+* Block Scope : 
+	- variable hanya bisa digunakan di dalam blok program nya saja (misal variable yang ada di dalam if, tidak bisa digunakan di luar if tersebut)
+	- digunakan oleh bahasa pemrograman seperti C, Java
+
+* Function Scope
+	- Digunakan oleh bahasa pemorograman : Javascript
+
+* Contoh :
+
+	var a = 1; // contoh global variable (bisa di panggil dimana pun)
+
+	function tes(){
+		var b = 2; // contoh function variable (hanya bisa di panggil di dalam function)
+
+		console.log(b); // var b bisa dipanggil di dalam function
+		console.log(a); // var a bisa dipanggil di dalam function
+	}
+
+	tes();
+
+	console.log(a); // var a bisa dipanggil di luar function
+	console.log(b); // ini akan error, var b tidak bisa di panggil di luar function
+
+....................................................................................
+
+32. Function - Rekursif
+
+* Rekursif : sebuah fungsi yang memanggil dirinya sendiri
+
+* Rekursif harus berakhir dan menghasilkan nilai (berhenti dengan base case)
+
+* Base Case : Kondisi akhir dari rekursif yang menghasilkan nilai
+
+* Contoh 1 : (Membuat perulangan mundur dari 10 sampai 1 dengan function)
+	
+	function cetakAngka(n){
+		if(n===0){	//Awal base case
+			return;
+		}              //Akhir base case
+		console.log(n);
+		cetakAngka(n-1);
+	}
+
+	cetakAngka(10);
+
+* Contoh 2 : (membuat perkalian faktor / seperti test compassion, misal angka 5 , berarti faktoring nya = 5x4x3x2x1 = 120)
+	
+	function faktorial(n){
+		if(n===0){
+			return 1;
+		}
+		return n * faktorial(n-1);
+	}
+
+	console.log(faktorial(5));
+
+* Implementasi / Kegunaan Rekursif :
+	- Menggantikan looping
+	- Membuat Deret Fibonacci
+	- Pencarian dan penelusuran pada struktur data list dan tree
+	- Membantu bahasa pemrograman yang tidak memiliki pengulangan (haskell,Erlang, Prolog,dll)
+
+....................................................................................
+
+33. Function - Declaration VS Expression
+
+* Function Declaration Format:
+	function nama_function (parameterList opt ) {
+		functionBody
+	}
+
+* Function Expression Format :
+	var nama_function = function (parameterList opt){
+		functionBody
+	}
+
+* Contoh Function Declaration :
+	function tambah_angka(a,b){
+		return a+b;
+	}
+
+* Contoh Function Expression :
+	var tambah_angka = function(a,b){
+		return a+b;
+	}
+
+* Kelebihan Function Declaration :
+	- Lebih fleksibel (dapat ditulis dimanapun / sebelum atau setelah pemanggilan)
+	- Karena konsep Hoisting
+	- Mudah dipahami pemula
+
+* Kelebihan Function Expression :
+	- Harus didefinisikan dahulu sebelum di panggil
+	- Lebih powerfull 
+	- Sebagai closure
+	- Sebagai argumen untuk function lain
+	- IIFE (Immadiatelly Invoked Function Expression)
+	- Digunakan oleh Jquery
+
+....................................................................................
+
+34. Array - Intro
+
+* Array : Tipe data yang digunakan untuk mendeskripsikan kumpulan elemen (nilai atau vaiable), yang tiap2 elemennya memiliki index
+
+* Array : Variable yang bisa menampung lebih dari satu nilai
+
+* Kenapa Array?
+	- Mempermudah pengelolaan nilai/value/data (Dalam Penelusuran dan pencarian)
+	- Manajemen Memori
+
+* Karakteristik Array Pada Javascript :
+	- variable jamak, yang mempunyai bayak elemen yang diacu dengan nama yang sama
+	- kumpulan pasangan key dan nilai / key and value pair
+	- key adalah index pada array dengan tipe integer yang dimulai dari 0
+	- Array pada javascript bertipe object
+	- Array pada javascript memiliki fungsi / method lenght untuk menghitung jumlah element di dalamnya
+	- Elemen pada array boleh memiliki tipe data yang berbeda
+
+* Contoh Penulisan :
+	var hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+	console.log(hari[2]); // maka yang akan tampil adalah Rabu
+	console.log(typeof(hari)) // maka yang akan tampil adalah Object (Tipe datanya)
+	console.log(hari.length); // maka yang akan tampil adalah 7 (Jumlah hari)
+
+....................................................................................
+
+35. Array - Manipulasi Array
+
+* Menampilkan isi array
+	
+	var mhs = ['Anwar','Shinta','Muneeb'];
+
+	for(var i=0 ; i<mhs.length; i++){
+		console.log('Mahasiswa Ke-' + i + ' : ' + mhs[i]);
+	}
+
+* Method pada array (selain length)
+	1. join : mengubah array menjadi string dan menampilkan nya dengan rapi
+		contoh : 
+			var mhs = ['anwar','shinta','muneeb'];
+			console.log(mhs.join('-')); //maka yang tampil : anwar-shinta-muneeb
+
+	2. push : menambah/mendorong element baru di akhir array
+		contoh :
+			var mhs = ['anwar','shinta','muneeb'];
+			mhs.push('ujang');
+			console.log(mhs.join(-)); // maka yang tampil : anwar-shinta-muneeb-ujang
+
+	3. pop : menghilangkan elemen terakhir pada array
+		contoh :
+			var mhs = ['anwar','shinta','muneeb'];
+			mhs.pop();
+			console.log(mhs.join('-')); // maka yang tampil : anwar-shinta
+
+	4. unshift : menambah elemen di awal array
+		contoh :
+			var mhs = ['anwar','shinta','muneeb'];
+			mhs.unshift('fikar');
+			console.log(mhs.join('-')); // maka yang tampil : fikar-anwar-shinta-muneeb
+
+	5. shift : menghapus elemen di awal array
+		contoh :
+			var mhs = ['anwar','shinta','muneeb'];
+			mhs.shift();
+			console.log(mhs.join('-')); // maka yang tampil : shinta-muneeb
+
+	6. splice : menambahkan array di tengah2
+		format :
+			splice(indexAwal, mauHapusBerapa, elemen2Baru);
+		contoh :
+			var mhs = ['anwar','shinta','muneeb'];
+			mhs.splice(1,0,'fikar');
+			console.log(mhs.join('-')); //maka yang tampil : anwar-fikar-shinta-muneeb
+
+	7. slice : mengiris bagian array dan menjadi array yang baru
+		format :
+			slice(awal,akhir);
+		contoh :
+			var mhs = ['anwar','shinta','muneeb','fikar'];
+			var mhs2 = mhs.slice(1,3);
+			console.log(mhs2.join('-')); //maka yang tampil : shinta-muneeb
+
+....................................................................................
+
+37.Array - Foreach & MAP (untuk looping pada array)
+
+* Foreach
+	- Tidak Mengembalikan array
+	- Hanya bisa manggil, tidak bisa lakukan operasi lain di dalam pemanggilan
+	contoh :
+		var nama = ['anwar','shinta','muneeb'];
+		nama.forEach(function(e, i){			//e = element , i = index
+			console.log('Nama ke-' + i + ' adalah ' + e);
+		}); // akan tampil : Nama Ke-(0,1,2) adalah ('anwar','shinta','muneeb') 
+
+
+* Map
+	- Mengembalikan array
+	- di dalam pemanggilan juga bisa di lakukan operasi lain seperti perhitungan
+	contoh :
+		var angka = [1,2,3,4,5];
+		var angka2 = angka.map(function(e){
+			return e*2;
+		});
+		console.log(angka2.join(' - '));
+
+
+* Sort 
+	- Untuk mengurutkan isi array ASC
+	contoh 1 (untuk string):
+		var nama = ['Shinta','Anwar','Muneeb'];
+		nama.sort();
+		console.log(nama.join( - ));
+
+	contoh 2 (untuk angka):
+		var angka = [3,5,6,7,1,2,8,4,30,10,20];
+		angka.sort(function(a,b){
+			return a-b;
+		});
+		console.log(angka.join( - ));
+
+....................................................................................
+
+38. Array - Filter & Find
+
+* Filter
+	- Mencari nilai pada array, dan mengembalikan dalam bentuk array (banyak nilai)
+	contoh :
+		var angka = [3,5,6,7,1,2,8,4,30,10,20];
+		var angka2 = angka.filter(function(e){
+			return e > 5;
+		});
+		console.log(angka2.join(' - '));
+
+* Find
+	- Mencari nilai pada array, dan mengembalikan dalam bentuk nilai (satu nilai)
+	contoh :
+		var angka = [3,5,6,7,1,2,8,4,30,10,20];
+		var angka2 = angka.find(function(e){
+			return e > 5;
+		});
+		console.log(angka2); //tidak bisa di tambah join, karena join hanya u/ array
+
+....................................................................................
+
+39. Membuat Program Pengelolaan Penumpang Angkot
+
+* kita akan menggunakan 2 fungsi, tambahPenumpang() dam hapusPenumpang()
+
+* tambahPenumpang() :
+
+	- 2 Parameter 
+		* namaPenumpang
+		* array penumpang
+
+	- Rules :
+		1. Jika angkot kosong, penumpang duduk di kursi pertama
+		2. penumpang berikutnya duduk di kursi selanjutnya secara berurutan
+		3. jika ada kursi kosong (karena penumpang turun), penumpang yang naik berikutnya duduk di kursi kosong terlebih dahulu
+		4. asumsi kursi tidak akan penuh dan akan bertambah terus jika ada penumpang nail
+		5. nama penumpang tidak boleh sama, untuk menghindari kebingungan ketika nanti penumpang turun
+
+	- SourceCode :
+		var penumpang = [];
+		var tambahPenumpang = function(namaPenumpang,penumpang){
+			// jika angkot kosong
+			if(penumpang.length == 0){
+				//tambah penumpang di awal array
+				penumpang.push(namaPenumpang);
+
+				//kembalikan isi array
+				return penumpang;
+			}else{
+				//telusuri seluruh kursi dari awal
+				for(var i = 0; i<penumpang.length; i++){
+					// jika ada kursi kosong
+					if(penumpang[i] == undefined){
+						// tambah penumpang dari kursi tersebut
+						penumpang[i] = namaPenumpang;
+
+						// kembalikan isi array
+						return penumpang;
+					}
+
+					// Jika sudah ada nama yang sama
+					else if(penumpang[i] == namaPenumpang){
+						// tampilkan pesan kesalahan
+						console.log(namaPenumpang + ' sudah ada di angkot');
+						// kembalikan isi array
+						return penumpang;
+					}
+
+					// jika seluruh kursi sudah terisi
+					else if(i == penumpang.length - 1){
+						// tambah penumpang di akhir array
+						penumpang.push(namaPenumpang);
+						// kembalikan isi array
+						return penumpang;
+					}
+				}
+			}
+		}
+
+
+* hapusPenumpang() :
+	
+	- 2 parameter
+		* namaPenumpang
+		* array penumpang
+
+	 - Rules :
+	 	1. Jika angkot kosong, tampilkan pesan bahwa angkot kosong
+	 	2. jika ada penumpang yang namanya sesuai, hapus nama penumpang pada array dengan memberi nilai undefined
+	 	3. jika tidak ada penumpang yang namanya sesuai, tampilkan pesan kesalahan
+
+	 - Source Code :
+	 	var hapusPenumpang = function(namaPenumpang,penumpang){
+
+			// jika angkot kosong, tampilkan bahwa angkot kosong
+			if(penumpang.length == 0){
+				console.log('Angkot Masih Kosong');
+				return penumpang;
+
+			// jika angkot tidak kosong
+			}else{
+				// telurusi semua kursi penumpang
+				for(var i=0 ; i<penumpang.length ; i++){
+		 
+					// jika ada penumpang yang namanya sesuai
+					if(penumpang[i] == namaPenumpang){
+						// hapus penumpang
+						penumpang[i] = undefined;
+						return penumpang;
+					}
+
+					// Jika tidak ada penumpang yang namanya sesuai
+					else if(i == penumpang.length-1){
+						console.log('tidak ada penumpang yang namanya ' + namaPenumpang);
+						return penumpang;
+					}
+
+				}	
+			}
+		}
+
+....................................................................................
+
+41. Object - Intro
+
+* Object : 
+	- kumpulan nilai yang memiliki nama
+	- object adalah array yang lebih sakti
+
+* In javascript, object are king. if you understand object, you understand javascript
+
+* Object pada bahasa pemrograman lain :
+	- PHP     : Associative Array
+	- Python  : Dictionaries
+	- C       : Hash Tables
+	- Java    : Hash Maps
+	- Ruby & Perl : Hashes
+
+* Kenapa Object?
+	- karena mampu menyimpan dan mengelola data yang lebih kompleks
+
+* contoh penulisan object :
+
+	var mahasiswa = {
+		nama : 'Munawar Ahmad',
+		lulus : true,
+		IPSemester : [3.35 , 3.70 , 3.89 , 3.56 , 3.90],
+		IPKumulatif : function(){
+			var total = 0;
+			var ips = this.IPSemester;
+			for(var i=0 ; i<ips.length ; i++){
+				total += ips[i];
+			}
+			return total/ips.length;
+		},
+		alamat : {
+			jalan : 'Jl. Putat Nutug No.93',
+			kota : 'Bogor',
+			provinsi : 'Jawa Barat'
+		}
+	}
+
+	mahasiswa.nama; //untuk menampilkan nama
+	mahasiswa.IPKumulatif(); //untuk menampilkan hasil IP Kumulatif
+	mahasiswa.IPSemester[0]; //untuk menampilkan IP semester 1
+	mahasiswa.alamat.kota; //untuk menampilkan kota tinggal mahasiswa
+
+* Variable yang ada di dalam object disebut 'properti'
+
+* Function yang ada di dalam object disebut 'method'
+
+....................................................................................
+
+42. Object - Membuat Object
+
+* Cara membuat object
+	1. Object Literal
+	2. Function Declaration
+	3. Constructor Function (keyword new)
+	4. Object.create()
+
+
+* Object dengan Object Literal, contoh (membuat 2 data) :
+
+	var mhs1 = {
+		nama : 'Munawar Ahmad',
+		umur : 26
+	}
+
+	var mhs2 = {
+		nama : 'Shinta Purnama',
+		umur : 23
+	}
+
+
+* Object dengan Function Declaration, contoh (membuat 2 data) :
+
+	function buatMahasiswa(nama, umur){
+		var mhs = {};
+		mhs.nama = nama;
+		mhs.umur = umur;
+		return mhs;
+	}
+
+	var mhs1 = buatMahasiswa('Munawar Ahmad', 26);
+	var mhs2 = buatMahasiswa('Shinta Purnama', 23);
+
+
+* Object dengan Constructor Function, contoh (membuat 2 data) :
+	
+	function BuatMahasiswa(nama, umur){ //nama function diawali huruf besar
+		this.nama = nama;
+		this.umur = umur;
+	}
+
+	var mhs1 = new BuatMahasiswa('Munawar Ahmad', 26);
+	var mhs2 = new BuatMahasiswa('Shinta Purnama', 23);
+
+....................................................................................
+
+43. Object - This
+
+* this : sebuah keyword spesial yang secara otomatis didefinisikan oleh setiap function
+
+* Di global scope this = window
+	buktinya :
+		console.log(this === window); //hasilnya trus
+
+* Di Object - Function Declaration, this mengembalikan object global
+	buktinya :
+		function halo(){
+			console.log(this);
+			console.log('hallo');
+		}
+		halo();
+		// yang akan tampil : window
+
+
+* Di Object - Object Literal, this mengembalikan object itu sendiri
+	var obj = {};
+	obj.halo = function(){
+		console.log(this);
+		console.log('halo');
+	}
+	obj.halo();
+
+
+* Di Object - Constructor, this mengembalikan object yang baru dibuat / new Object()
+	function Halo(){
+		console.log(this);
+		console.log('halo');
+	}
+	new Halo(); //ini object yang baru dibuat
+
+....................................................................................
+
+44. Latihan Object - Pengelolaan Angkot
+
+* Hal yang akan dikelola :
+	- Sopir
+	- Trayek
+	- Kas
+	- Penumpang
+		* Penumpang naik
+		* Penumpang turun
+
+* Source Code :
+	
+	// Membuat pengelolaan angkot dengan object
+
+	var angkot1 = new Angkot('Anwar',['Ciseeng','Parung'], [], 0);
+	var angkot2 = new Angkot('Fikar',['Parung','Rumpin'], [], 0);
+
+	function Angkot(sopir, trayek, penumpang, kas){
+		this.sopir = sopir;
+		this.trayek = trayek;
+		this.penumpang = penumpang;
+		this.kas = kas;
+
+		this.penumpangNaik = function(namaPenumpang){
+			this.penumpang.push(namaPenumpang);
+			return this.penumpang;
+		}
+
+		this.penumpangTurun = function(namaPenumpang,bayar){
+			// cek jika angkot masih kosong
+			if(this.penumpang.length === 0){
+				alert('Angkot Masih kosong');
+				return false;
+			}
+
+
+			
+			// cek penumpang di dalam angkot
+			for(var i=0 ; i<this.penumpang.length ; i++){
+
+				// kalo ada nama penumpang
+				if(this.penumpang[i] == namaPenumpang){
+					this.penumpang[i] = undefined; // hapus penumpang
+					this.kas += bayar; // kas ditambah uang bayar dari penumpang
+					return this.penumpang;
+
+				}
+			}
+			
+		}
+
+	}

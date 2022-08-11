@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS Event</title>
+</head>
+<body>
+
+<!-- 
+	Event HTML pada Javascript :
+	1. onclick : saat di klik
+	2. onchange : saat element berubah
+	3. onmouseover : saat posisi mouse menyentuh
+	4. onmouseout : saat mouse meninggalkan
+	5. onkeydown : saat user menekan keyboard
+	6. onload : saat browser sudah load
+
+	kumpulan event lengkap : file:///C:/xampp/htdocs/w3school/jsref/dom_obj_event.asp.html -> buka di browser
+
+ -->
+
+	<button onclick="tampil_tanggal()">Tekan</button>  <!-- contoh onclick -->
+	<div id="demo">Sambutan Tampil Disini</div> <br>
+
+	<a href="#" onmouseover="this.style.color='red'" onmouseout="this.style.color='blue'">taruh kursor disini</a> <!-- contoh onmouseover dan onmouseout -->
+
+
+
+<script>
+	
+	function tampil_tanggal(){
+		document.getElementById('demo').innerHTML = 'Selamat Datang';
+	}
+
+</script>
+
+</body>
+</html>
